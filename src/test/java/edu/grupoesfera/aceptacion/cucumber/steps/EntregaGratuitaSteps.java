@@ -4,10 +4,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import edu.grupoesfera.dto.Pedido;
+import edu.grupoesfera.modelo.Entrega;
 
 import java.util.HashMap;
 import java.util.Map;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EntregaGratuitaSteps extends StepDefinition {
 
@@ -35,14 +37,13 @@ public class EntregaGratuitaSteps extends StepDefinition {
 
     private void validarQueGastosDeEnvioCorrespondanA(String tipoEntrega) {
         gastosDeEnvio = calcularGastosDeEnvio();
-        assertThat(gastosDeEnvio).isEqualTo(Entrega.valueOf(tipoEntrega.toUpperCase()).costo);
+        assertThat(gastosDeEnvio).isEqualTo(Entrega.valueOf(tipoEntrega.toUpperCase()).costo());
     }
 
     private Integer calcularGastosDeEnvio() {
         pedido.setProductos(productos);
         pedido.setTipoCliente(tipoDeCliente);
-        String URI = url() + "/calcular-costo-envio";
-        return restTemplate.postForObject(URI, pedido, Integer.class);
+        return restTemplate.postForObject(url() + "/calcular-costo-envio", pedido, Integer.class);
     }
 
 
