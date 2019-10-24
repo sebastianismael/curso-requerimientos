@@ -10,7 +10,7 @@ public class CalculadorDeCostoDeEntrega {
 
     public static Integer calcular(Pedido pedido) {
         if(esClienteVIP(pedido)){
-            if(pedido.getProductos().get("libros") >= MINIMA_CANTIDAD_LIBROS_PARA_ENTREGA_GRATUITA){
+            if(hayCantidadSuficienteDeLibrosParaEntregaGratuita(pedido)){
                 return Entrega.GRATUITA.costo();
             }
         }
@@ -19,6 +19,13 @@ public class CalculadorDeCostoDeEntrega {
 
     private static boolean esClienteVIP(Pedido pedido) {
         return pedido.getTipoCliente().equalsIgnoreCase(VIP);
+    }
+
+    private static Boolean hayCantidadSuficienteDeLibrosParaEntregaGratuita(Pedido pedido){
+        if(pedido.getProductos().containsKey("libros")){
+            return pedido.getProductos().get("libros") >= MINIMA_CANTIDAD_LIBROS_PARA_ENTREGA_GRATUITA;
+        }
+        return false;
     }
 
 }
