@@ -10,10 +10,10 @@ El numero minimo de libros para obtener entrega gratuita es 5
     When realiza la compra de 5 libros
     Then obtiene entrega gratuita
 
-#  Scenario: Un cliente VIP pidiendo 4 libros obtiene entrega standard
-#    Given el comprador es un cliente VIP
-#    When realiza la compra de 4 libros
-#    Then obtiene entrega standard
+  Scenario: Un cliente VIP pidiendo 4 libros obtiene entrega standard
+    Given el comprador es un cliente VIP
+    When realiza la compra de 4 libros
+    Then obtiene entrega standard
 
   Scenario: Un cliente Regular pidiendo 10 libros obtiene entrega standard
     Given el comprador es un cliente Regular
