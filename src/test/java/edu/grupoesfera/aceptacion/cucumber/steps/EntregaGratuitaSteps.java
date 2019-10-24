@@ -24,16 +24,14 @@ public class EntregaGratuitaSteps extends StepDefinition {
     }
 
     @When("^realiza la compra de (.*) (.*)$")
-    public void realizaLaCompraDeLibros(Integer cantidad, String item) {
-        productos.put(item, cantidad);
+    public void realizaLaCompraDeLibros(Integer cantidad, String producto) {
+        agregarAlPedido(producto, cantidad);
     }
 
     @Then("^obtiene entrega (.*)$")
     public void obtieneEntrega(String tipoEntrega) {
         validarQueGastosDeEnvioCorrespondanA(tipoEntrega);
     }
-
-
 
     private void validarQueGastosDeEnvioCorrespondanA(String tipoEntrega) {
         gastosDeEnvio = calcularGastosDeEnvio();
@@ -44,6 +42,10 @@ public class EntregaGratuitaSteps extends StepDefinition {
         pedido.setProductos(productos);
         pedido.setTipoCliente(tipoDeCliente);
         return restTemplate.postForObject(url() + "/calcular-costo-envio", pedido, Integer.class);
+    }
+
+    private void agregarAlPedido(String item, Integer cantidad) {
+        productos.put(item, cantidad);
     }
 
 
