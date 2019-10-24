@@ -1,12 +1,13 @@
 package edu.grupoesfera.servicios;
 
 import edu.grupoesfera.dto.Pedido;
+import edu.grupoesfera.modelo.Entrega;
 
 public class CalculadorDeCostoDeEntrega {
     public static Integer calcular(Pedido pedido) {
         if(pedido.getTipoCliente().equalsIgnoreCase("VIP")){
-            return Integer.valueOf(0);
+            return Entrega.GRATUITA.costo();
         }
-        return Integer.valueOf(100);
+        return Entrega.STANDARD.costo();
     }
 }
