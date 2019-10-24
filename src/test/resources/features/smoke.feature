@@ -1,4 +1,4 @@
-Feature: Prueba de humo sobre el sitio
+Feature: Prueba de keep alive sobre el sitio
 
   Scenario: El sitio esta disponible
     Given
