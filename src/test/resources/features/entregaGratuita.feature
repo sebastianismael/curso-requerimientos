@@ -20,11 +20,11 @@ El numero minimo de libros para obtener entrega gratuita es 5
     When realiza la compra de 10 libros
     Then obtiene entrega standard
 
-#  Scenario: Un cliente VIP pidiendo 5 DVD obtiene entrega standard
-#    Given el comprador es un cliente VIP
-#    When realiza la compra de 5 DVD
-#    Then obtiene entrega standard
-#
+  Scenario: Un cliente VIP pidiendo 5 DVD obtiene entrega standard
+    Given el comprador es un cliente VIP
+    When realiza la compra de 5 DVD
+    Then obtiene entrega standard
+
 #  Scenario: Un cliente VIP pidiendo 5 libros y 1 DVD obtiene entrega standard
 #    Given el comprador es un cliente VIP
 #    When realiza la compra de 5 libros
