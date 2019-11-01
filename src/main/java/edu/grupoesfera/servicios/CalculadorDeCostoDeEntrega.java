@@ -12,14 +12,7 @@ public class CalculadorDeCostoDeEntrega {
 
     public static Integer calcular(Map<String, Integer> productos, String cliente) {
 
-        if(esClienteVIP(cliente)){
-            if(hayCantidadSuficienteDeLibrosParaEntregaGratuitaEn(productos)){
-                if(haySoloUnTipoDeProductoEn(productos)){
-                    return Entrega.GRATUITA.costo();
-                }
-            }
-        }
-        return Entrega.STANDARD.costo();
+        return 0;
     }
 
     private static boolean haySoloUnTipoDeProductoEn(Map<String, Integer> productos) {
