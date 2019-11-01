@@ -11,6 +11,6 @@ public class ControladorBiblioteca {
 
     @PostMapping(path = "/calcular-costo-envio")
     public Integer calcularCosto(@RequestBody Pedido pedido){
-        return cCalculadorDeCostoDeEntrega.calcular(pedido.getProductos(), pedido.getTipoCliente());
+        return CalculadorDeCostoDeEntrega.calcular(pedido.getProductos(), pedido.getTipoCliente());
     }
 }
