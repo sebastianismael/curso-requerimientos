@@ -12,7 +12,7 @@ public class CalculadorDeCostoDeEntrega {
 
     public static Integer calcular(Map<String, Integer> productos, String cliente) {
 
-        return 0;
+        return -1;
     }
 
     private static boolean haySoloUnTipoDeProductoEn(Map<String, Integer> productos) {
