@@ -30,11 +30,11 @@ public class EntregaGratuitaSteps extends StepDefinition {
 
     @Then("^obtiene entrega (.*)$")
     public void validarGastosDeEntrega(String tipoEntrega) {
+        gastosDeEnvio = obtenerGastosDeEnvio();
         validarQueLosGastosDeEnvioCorrespondanA(tipoEntrega);
     }
 
     private void validarQueLosGastosDeEnvioCorrespondanA(String tipoEntrega) {
-        gastosDeEnvio = obtenerGastosDeEnvio();
         assertThat(gastosDeEnvio).isEqualTo(Entrega.valueOf(tipoEntrega.toUpperCase()).costo());
     }
 
