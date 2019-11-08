@@ -12,6 +12,10 @@ public class CalculadorDeCostoDeEntrega {
 
     public static Integer calcular(Map<String, Integer> productos, String cliente) {
 
+        if(pedidoVacio(productos)){
+            throw new RuntimeException("El pedido con contiene productos");
+        }
+
         if(esClienteVIP(cliente)){
             if(hayCantidadSuficienteDeLibrosParaEntregaGratuitaEn(productos)){
                 if(haySoloUnTipoDeProductoEn(productos)){
@@ -20,6 +24,10 @@ public class CalculadorDeCostoDeEntrega {
             }
         }
         return Entrega.STANDARD.costo();
+    }
+
+    private static boolean pedidoVacio(Map<String, Integer> productos) {
+        return productos.isEmpty();
     }
 
     private static boolean haySoloUnTipoDeProductoEn(Map<String, Integer> productos) {
