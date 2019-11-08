@@ -1,4 +1,4 @@
-package edu.grupoesfera.dto;
+package edu.grupoesfera.modelo;
 
 import java.util.Map;
 

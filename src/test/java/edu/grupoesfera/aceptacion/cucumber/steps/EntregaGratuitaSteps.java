@@ -3,7 +3,7 @@ package edu.grupoesfera.aceptacion.cucumber.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import edu.grupoesfera.dto.Pedido;
+import edu.grupoesfera.modelo.Pedido;
 import edu.grupoesfera.modelo.Entrega;
 
 import java.util.HashMap;
