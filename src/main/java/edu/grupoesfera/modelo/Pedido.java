@@ -3,6 +3,7 @@ package edu.grupoesfera.modelo;
 import java.util.Map;
 
 public class Pedido {
+    private String direccionDeEntrega;
     private String tipoCliente;
     private Map<String, Integer> productos;
 
@@ -20,5 +21,13 @@ public class Pedido {
 
     public void setProductos(Map<String, Integer> productos) {
         this.productos = productos;
+    }
+
+    public String getDireccionDeEntrega() {
+        return direccionDeEntrega;
+    }
+
+    public void setDireccionDeEntrega(String direccionDeEntrega) {
+        this.direccionDeEntrega = direccionDeEntrega;
     }
 }
