@@ -17,6 +17,9 @@ public class GeneradorDeEnvios {
         else if(cantidadDeProductos <= 10){
             envio.setVehiculo(Vehiculo.MOTO.name());
         }
+        else if(cantidadDeProductos <= 30){
+            envio.setVehiculo(Vehiculo.AUTO.name());
+        }
         return envio;
     }
 

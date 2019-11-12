@@ -14,3 +14,8 @@ No es posible asignar vehiculo para pedidos superiores a 30 paquetes.
     Given Se realiza la compra de 7 libros
     When se solicita la entrega en la calle Peru 111
     Then se asigna como vehiculo de entrega Moto
+
+  Scenario: A un pedido de mas de 10 y menos de 30 paquetes se le asigna como vehiculo de entrega auto
+    Given Se realiza la compra de 23 libros
+    When se solicita la entrega en la calle Peru 111
+    Then se asigna como vehiculo de entrega Auto
