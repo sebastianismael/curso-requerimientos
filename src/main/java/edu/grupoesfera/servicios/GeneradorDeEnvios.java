@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GeneradorDeEnvios {
 
-    public static Envio generar(Map<String, Integer> productos, String direccionDeEntrega) {
+    public static Envio generar(Map<String, Integer> productos, String direccionDeEntrega) throws Exception {
         Envio envio = new Envio();
         envio.setDireccionDeEntrega(direccionDeEntrega);
         int cantidadDeProductos = contarProductos(productos);
@@ -19,6 +19,8 @@ public class GeneradorDeEnvios {
         }
         else if(cantidadDeProductos <= 30){
             envio.setVehiculo(Vehiculo.AUTO.name());
+        } else {
+            throw new Exception("Cantidad de paquetes demasiado grande " + cantidadDeProductos);
         }
         return envio;
     }
