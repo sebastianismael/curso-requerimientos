@@ -8,6 +8,7 @@ public class CalculadorCostoDeEntregaTest {
 
     @Test(expected = RuntimeException.class)
     public void calcularCostoDeEntregaParaListaDeProductosVaciasLanzaError(){
-        CalculadorDeCostoDeEntrega.calcular(new HashMap<>(), "");
+        CalculadorDeCostoDeEntrega calculadorDeCostoDeEntrega = new CalculadorDeCostoDeEntrega();
+        calculadorDeCostoDeEntrega.calcular(new HashMap<>(), "");
     }
 }
