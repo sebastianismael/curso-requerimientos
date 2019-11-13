@@ -1,8 +1,11 @@
 package edu.grupoesfera.controladores;
 
+import edu.grupoesfera.modelo.Compra;
 import edu.grupoesfera.modelo.Envio;
+import edu.grupoesfera.modelo.Factura;
 import edu.grupoesfera.modelo.Pedido;
 import edu.grupoesfera.servicios.CalculadorDeCostoDeEntrega;
+import edu.grupoesfera.servicios.Facturador;
 import edu.grupoesfera.servicios.GeneradorDeEnvios;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ControladorBiblioteca {
+
+    private Facturador facturador = new Facturador();
 
     @PostMapping(path = "/calcular-costo-envio")
     public Integer calcularCosto(@RequestBody Pedido pedido){
@@ -24,5 +29,10 @@ public class ControladorBiblioteca {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @PostMapping(path = "/comprar")
+    public Factura comprar(@RequestBody Compra compra){
+        return facturador.facturar(compra.getCliente(), compra.getItems());
     }
 }
