@@ -10,9 +10,16 @@ public class Facturador {
         Factura factura = new Factura();
         Double monto = 0.0;
         for(Item item : items){
-            monto += item.getPrecioUnitario() * item.getCantidad();
+            if(item.getProducto().equalsIgnoreCase("LIBROS")){
+                final int triadas = item.getCantidad() / 3;
+                final int resto = item.getCantidad() % 3;
+                monto = item.getPrecioUnitario() * 2 * triadas + item.getPrecioUnitario() * resto;
+            } else {
+                monto += item.getPrecioUnitario() * item.getCantidad();
+            }
         }
         factura.setMonto(monto);
         return factura;
     }
+
 }
