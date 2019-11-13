@@ -16,7 +16,6 @@ Si se compran libros y otro producto la promoción corre unicamente para los lib
     When realiza la compra
     Then se obtiene una factura por $80
 
-  @skip
   Scenario: Se realiza la compra de 4 libros
     Given se agregan a la compra 4 libros de $40
     When realiza la compra
