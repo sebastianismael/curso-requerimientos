@@ -1,6 +1,6 @@
 package edu.grupoesfera.servicios;
 
-import edu.grupoesfera.modelo.Entrega;
+import edu.grupoesfera.modelo.TipoDeEntrega;
 
 import java.util.Map;
 
@@ -19,11 +19,11 @@ public class CalculadorDeCostoDeEntrega {
         if(esClienteVIP(cliente)){
             if(hayCantidadSuficienteDeLibrosParaEntregaGratuitaEn(productos)){
                 if(haySoloUnTipoDeProductoEn(productos)){
-                    return Entrega.GRATUITA.costo();
+                    return TipoDeEntrega.GRATUITA.costo();
                 }
             }
         }
-        return Entrega.STANDARD.costo();
+        return TipoDeEntrega.STANDARD.costo();
     }
 
     private boolean pedidoVacio(Map<String, Integer> productos) {

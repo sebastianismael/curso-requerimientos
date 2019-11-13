@@ -1,14 +1,14 @@
 package edu.grupoesfera.modelo;
 
-public class Item {
+public class ItemFactura {
 
     private Integer cantidad;
     private String producto;
     private Double precioUnitario;
 
-    public Item(){}
+    public ItemFactura(){}
 
-    public Item(Integer cantidad, String producto, Double precioUnitario) {
+    public ItemFactura(Integer cantidad, String producto, Double precioUnitario) {
         this.cantidad = cantidad;
         this.producto = producto;
         this.precioUnitario = precioUnitario;

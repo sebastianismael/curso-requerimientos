@@ -1,9 +1,9 @@
 package edu.grupoesfera.controladores;
 
-import edu.grupoesfera.modelo.Compra;
+import edu.grupoesfera.modelo.OrdenDeCompra;
 import edu.grupoesfera.modelo.Envio;
 import edu.grupoesfera.modelo.Factura;
-import edu.grupoesfera.modelo.Pedido;
+import edu.grupoesfera.modelo.PedidoDeEnvio;
 import edu.grupoesfera.servicios.CalculadorDeCostoDeEntrega;
 import edu.grupoesfera.servicios.Facturador;
 import edu.grupoesfera.servicios.GeneradorDeEnvios;
@@ -20,12 +20,12 @@ public class ControladorBiblioteca {
     private GeneradorDeEnvios generadorDeEnvios = new GeneradorDeEnvios();
 
     @PostMapping(path = "/calcular-costo-envio")
-    public Integer calcularCosto(@RequestBody Pedido pedido){
+    public Integer calcularCosto(@RequestBody PedidoDeEnvio pedido){
         return calculadorDeCostoDeEntrega.calcular(pedido.getProductos(), pedido.getTipoCliente());
     }
 
     @PostMapping(path = "/solicitar-entrega")
-    public ResponseEntity<Envio> solicitarEntrega(@RequestBody Pedido pedido){
+    public ResponseEntity<Envio> solicitarEntrega(@RequestBody PedidoDeEnvio pedido){
         try {
             Envio envio = generadorDeEnvios.generar(pedido.getProductos(), pedido.getDireccionDeEntrega());
             return ResponseEntity.ok(envio);
@@ -35,7 +35,7 @@ public class ControladorBiblioteca {
     }
 
     @PostMapping(path = "/comprar")
-    public Factura comprar(@RequestBody Compra compra){
+    public Factura comprar(@RequestBody OrdenDeCompra compra){
         return facturador.facturar(compra.getCliente(), compra.getItems());
     }
 

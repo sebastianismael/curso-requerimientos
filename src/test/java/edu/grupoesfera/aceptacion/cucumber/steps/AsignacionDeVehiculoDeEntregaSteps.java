@@ -4,7 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import edu.grupoesfera.modelo.Envio;
-import edu.grupoesfera.modelo.Pedido;
+import edu.grupoesfera.modelo.PedidoDeEnvio;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 public class AsignacionDeVehiculoDeEntregaSteps extends StepDefinition {
 
     private Map<String, Integer> productos = new HashMap<>();
-    private Pedido pedido = new Pedido();
+    private PedidoDeEnvio pedido = new PedidoDeEnvio();
     private Envio envio;
     private HttpStatus httpStatus;
 

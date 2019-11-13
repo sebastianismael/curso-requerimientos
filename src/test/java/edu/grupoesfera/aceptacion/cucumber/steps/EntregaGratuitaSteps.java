@@ -3,8 +3,8 @@ package edu.grupoesfera.aceptacion.cucumber.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import edu.grupoesfera.modelo.Pedido;
-import edu.grupoesfera.modelo.Entrega;
+import edu.grupoesfera.modelo.PedidoDeEnvio;
+import edu.grupoesfera.modelo.TipoDeEntrega;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ public class EntregaGratuitaSteps extends StepDefinition {
     private String tipoDeCliente;
     private Map<String, Integer> productos = new HashMap<>();
     private Integer gastosDeEnvio;
-    private Pedido pedido = new Pedido();
+    private PedidoDeEnvio pedido = new PedidoDeEnvio();
 
     @Given("^el comprador es un cliente (.*)$")
     public void indicarTipoDeClienteQueRealizaElPedido(String tipoCliente) {
@@ -35,7 +35,7 @@ public class EntregaGratuitaSteps extends StepDefinition {
     }
 
     private void validarQueLosGastosDeEnvioCorrespondanA(String tipoEntrega) {
-        assertThat(gastosDeEnvio).isEqualTo(Entrega.valueOf(tipoEntrega.toUpperCase()).costo());
+        assertThat(gastosDeEnvio).isEqualTo(TipoDeEntrega.valueOf(tipoEntrega.toUpperCase()).costo());
     }
 
     private Integer obtenerGastosDeEnvio() {

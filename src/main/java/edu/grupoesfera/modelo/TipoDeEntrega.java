@@ -1,10 +1,10 @@
 package edu.grupoesfera.modelo;
 
-public enum Entrega {
+public enum TipoDeEntrega {
     GRATUITA(0), STANDARD(100);
 
     int costo;
-    Entrega(int costo){
+    TipoDeEntrega(int costo){
         this.costo = costo;
     }
 

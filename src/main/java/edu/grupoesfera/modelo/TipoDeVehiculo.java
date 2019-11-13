@@ -1,6 +1,6 @@
 package edu.grupoesfera.modelo;
 
-public enum Vehiculo {
+public enum TipoDeVehiculo {
     BICICLETA,
     MOTO,
     AUTO;

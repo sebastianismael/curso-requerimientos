@@ -5,7 +5,7 @@ import java.util.List;
 public class Factura {
 
     private Double monto;
-    private List<Item> items;
+    private List<ItemFactura> items;
     private String cliente;
 
     public Double getMonto() {
@@ -16,11 +16,11 @@ public class Factura {
         this.monto = monto;
     }
 
-    public List<Item> getItems() {
+    public List<ItemFactura> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<ItemFactura> items) {
         this.items = items;
     }
 

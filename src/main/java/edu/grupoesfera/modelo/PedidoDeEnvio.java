@@ -2,7 +2,7 @@ package edu.grupoesfera.modelo;
 
 import java.util.Map;
 
-public class Pedido {
+public class PedidoDeEnvio {
     private String direccionDeEntrega;
     private String tipoCliente;
     private Map<String, Integer> productos;

@@ -1,7 +1,7 @@
 package edu.grupoesfera.servicios;
 
 import edu.grupoesfera.modelo.Factura;
-import edu.grupoesfera.modelo.Item;
+import edu.grupoesfera.modelo.ItemFactura;
 
 import java.util.List;
 import java.util.function.ToDoubleFunction;
@@ -10,7 +10,7 @@ public class Facturador {
 
     public static final String LIBROS = "LIBROS";
 
-    public Factura facturar(String cliente, List<Item> items) {
+    public Factura facturar(String cliente, List<ItemFactura> items) {
         Double monto = items.stream().mapToDouble(calcularCostoItem).sum();
 
         Factura factura = new Factura();
@@ -19,11 +19,11 @@ public class Facturador {
         return factura;
     }
 
-    private boolean elItemCorrespondeALibros(Item item) {
+    private boolean elItemCorrespondeALibros(ItemFactura item) {
         return item.getProducto().equalsIgnoreCase(LIBROS);
     }
 
-    private ToDoubleFunction<Item> calcularCostoItem = item -> {
+    private ToDoubleFunction<ItemFactura> calcularCostoItem = item -> {
         if(elItemCorrespondeALibros(item)){
             final int triadas = item.getCantidad() / 3;
             final int resto = item.getCantidad() % 3;

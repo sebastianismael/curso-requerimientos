@@ -2,23 +2,23 @@ package edu.grupoesfera.modelo;
 
 import java.util.List;
 
-public class Compra {
+public class OrdenDeCompra {
 
-    private List<Item> items;
+    private List<ItemFactura> items;
     private String cliente;
 
-    public Compra(){}
+    public OrdenDeCompra(){}
 
-    public Compra(List<Item> items, String cliente) {
+    public OrdenDeCompra(List<ItemFactura> items, String cliente) {
         this.items = items;
         this.cliente = cliente;
     }
 
-    public List<Item> getItems() {
+    public List<ItemFactura> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<ItemFactura> items) {
         this.items = items;
     }
 

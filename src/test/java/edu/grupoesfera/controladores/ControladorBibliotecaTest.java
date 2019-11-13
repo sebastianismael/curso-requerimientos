@@ -1,7 +1,7 @@
 package edu.grupoesfera.controladores;
 
 import edu.grupoesfera.modelo.Envio;
-import edu.grupoesfera.modelo.Pedido;
+import edu.grupoesfera.modelo.PedidoDeEnvio;
 import edu.grupoesfera.servicios.GeneradorDeEnvios;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -23,8 +23,8 @@ public class ControladorBibliotecaTest {
         assertThat(envioResponseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
-    private Pedido pedidoMock() {
-        Pedido pedido = mock(Pedido.class);
+    private PedidoDeEnvio pedidoMock() {
+        PedidoDeEnvio pedido = mock(PedidoDeEnvio.class);
         when(pedido.getProductos()).thenReturn(mock(Map.class));
         when(pedido.getDireccionDeEntrega()).thenReturn(anyString());
         return pedido;

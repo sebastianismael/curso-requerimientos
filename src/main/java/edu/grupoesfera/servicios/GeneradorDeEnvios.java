@@ -1,7 +1,7 @@
 package edu.grupoesfera.servicios;
 
 import edu.grupoesfera.modelo.Envio;
-import edu.grupoesfera.modelo.Vehiculo;
+import edu.grupoesfera.modelo.TipoDeVehiculo;
 
 import java.util.Map;
 
@@ -12,13 +12,13 @@ public class GeneradorDeEnvios {
 
         int cantidadDeProductos = contarProductos(productos);
         if(cantidadDeProductos <= 5){
-            envio.setVehiculo(Vehiculo.BICICLETA.name());
+            envio.setVehiculo(TipoDeVehiculo.BICICLETA.name());
         }
         else if(cantidadDeProductos <= 10){
-            envio.setVehiculo(Vehiculo.MOTO.name());
+            envio.setVehiculo(TipoDeVehiculo.MOTO.name());
         }
         else if(cantidadDeProductos <= 30){
-            envio.setVehiculo(Vehiculo.AUTO.name());
+            envio.setVehiculo(TipoDeVehiculo.AUTO.name());
         } else {
             throw new Exception("Cantidad de paquetes demasiado grande " + cantidadDeProductos);
         }
