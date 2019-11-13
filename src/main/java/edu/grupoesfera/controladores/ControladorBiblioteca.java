@@ -27,7 +27,8 @@ public class ControladorBiblioteca {
     @PostMapping(path = "/solicitar-entrega")
     public ResponseEntity<Envio> solicitarEntrega(@RequestBody Pedido pedido){
         try {
-            return ResponseEntity.ok(generadorDeEnvios.generar(pedido.getProductos(), pedido.getDireccionDeEntrega()));
+            Envio envio = generadorDeEnvios.generar(pedido.getProductos(), pedido.getDireccionDeEntrega());
+            return ResponseEntity.ok(envio);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -36,5 +37,18 @@ public class ControladorBiblioteca {
     @PostMapping(path = "/comprar")
     public Factura comprar(@RequestBody Compra compra){
         return facturador.facturar(compra.getCliente(), compra.getItems());
+    }
+
+    // IoC setters
+    public void setFacturador(Facturador facturador) {
+        this.facturador = facturador;
+    }
+
+    public void setCalculadorDeCostoDeEntrega(CalculadorDeCostoDeEntrega calculadorDeCostoDeEntrega) {
+        this.calculadorDeCostoDeEntrega = calculadorDeCostoDeEntrega;
+    }
+
+    public void setGeneradorDeEnvios(GeneradorDeEnvios generadorDeEnvios) {
+        this.generadorDeEnvios = generadorDeEnvios;
     }
 }
