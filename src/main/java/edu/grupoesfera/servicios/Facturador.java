@@ -8,7 +8,11 @@ import java.util.List;
 public class Facturador {
     public Factura facturar(String cliente, List<Item> items) {
         Factura factura = new Factura();
-        factura.setMonto(80.0);
+        Double monto = 0.0;
+        for(Item item : items){
+            monto += item.getPrecioUnitario() * item.getCantidad();
+        }
+        factura.setMonto(monto);
         return factura;
     }
 }
