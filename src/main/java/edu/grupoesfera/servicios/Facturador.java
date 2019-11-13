@@ -10,17 +10,6 @@ public class Facturador {
 
     public static final String LIBROS = "LIBROS";
 
-    private ToDoubleFunction<Item> calcularCostoItem = item -> {
-        if(elItemCorrespondeALibros(item)){
-            final int triadas = item.getCantidad() / 3;
-            final int resto = item.getCantidad() % 3;
-            return item.getPrecioUnitario() * 2 * triadas + item.getPrecioUnitario() * resto;
-        } else {
-            return item.getPrecioUnitario() * item.getCantidad();
-        }
-
-    };
-
     public Factura facturar(String cliente, List<Item> items) {
         Double monto = items.stream().mapToDouble(calcularCostoItem).sum();
 
@@ -33,5 +22,16 @@ public class Facturador {
     private boolean elItemCorrespondeALibros(Item item) {
         return item.getProducto().equalsIgnoreCase(LIBROS);
     }
+
+    private ToDoubleFunction<Item> calcularCostoItem = item -> {
+        if(elItemCorrespondeALibros(item)){
+            final int triadas = item.getCantidad() / 3;
+            final int resto = item.getCantidad() % 3;
+            return item.getPrecioUnitario() * 2 * triadas + item.getPrecioUnitario() * resto;
+        } else {
+            return item.getPrecioUnitario() * item.getCantidad();
+        }
+
+    };
 
 }
