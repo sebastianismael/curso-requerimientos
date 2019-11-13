@@ -49,7 +49,7 @@ public class AsignacionDeVehiculoDeEntregaSteps extends StepDefinition {
         envio = responseEntity.getBody();
         httpStatus = responseEntity.getStatusCode();
     }
-    
+
     private void validarStatusDeLaRespuestaConError() {
         assertThat(httpStatus).isEqualTo(HttpStatus.BAD_REQUEST);
     }
