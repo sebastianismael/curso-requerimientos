@@ -26,7 +26,7 @@ Si se compran libros y otro producto la promoción corre unicamente para los lib
     When realiza la compra
     Then se obtiene una factura por $90
 
-  Scenario: Se realiza la compra de menos de 3 libros y 3 DVD
+  Scenario: Se realiza la compra de 3 libros y 3 DVD
     Given se agregan a la compra 3 libros de $40
     And se agregan a la compra 3 DVD de $30
     When realiza la compra
