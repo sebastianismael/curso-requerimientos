@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GeneradorDeEnvios {
 
-    public static Envio generar(Map<String, Integer> productos, String direccionDeEntrega) throws Exception {
+    public Envio generar(Map<String, Integer> productos, String direccionDeEntrega) throws Exception {
         Envio envio = new Envio();
         envio.setDireccionDeEntrega(direccionDeEntrega);
         int cantidadDeProductos = contarProductos(productos);
@@ -25,7 +25,7 @@ public class GeneradorDeEnvios {
         return envio;
     }
 
-    private static int contarProductos(Map<String, Integer> productos) {
+    private int contarProductos(Map<String, Integer> productos) {
         int cantidad = 0;
         for(Integer i : productos.values()){
             cantidad += i;

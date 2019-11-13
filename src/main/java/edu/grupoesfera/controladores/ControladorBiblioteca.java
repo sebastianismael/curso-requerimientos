@@ -17,6 +17,7 @@ public class ControladorBiblioteca {
 
     private Facturador facturador = new Facturador();
     private CalculadorDeCostoDeEntrega calculadorDeCostoDeEntrega = new CalculadorDeCostoDeEntrega();
+    private GeneradorDeEnvios generadorDeEnvios = new GeneradorDeEnvios();
 
     @PostMapping(path = "/calcular-costo-envio")
     public Integer calcularCosto(@RequestBody Pedido pedido){
@@ -26,7 +27,7 @@ public class ControladorBiblioteca {
     @PostMapping(path = "/solicitar-entrega")
     public ResponseEntity<Envio> solicitarEntrega(@RequestBody Pedido pedido){
         try {
-            return ResponseEntity.ok(GeneradorDeEnvios.generar(pedido.getProductos(), pedido.getDireccionDeEntrega()));
+            return ResponseEntity.ok(generadorDeEnvios.generar(pedido.getProductos(), pedido.getDireccionDeEntrega()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
