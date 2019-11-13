@@ -15,10 +15,9 @@ public class StepDefinition {
 
     @LocalServerPort
     private int port;
-    private String url;
 
     protected String url() {
-        return url = "http://localhost:" + port + "/biblioteca";
+        return "http://localhost:" + port + "/biblioteca";
     }
 
     @Autowired
