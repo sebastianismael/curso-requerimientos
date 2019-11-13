@@ -17,7 +17,8 @@ public class AsignacionDeVehiculoDeEntregaSteps extends StepDefinition {
 
     private Map<String, Integer> productos = new HashMap<>();
     private Pedido pedido = new Pedido();
-    private ResponseEntity<Envio> envio;
+    private Envio envio;
+    private HttpStatus httpStatus;
 
     @Given("^Se realiza la compra de (.*) (.*)$")
     public void seRealizaLaCompraDeProductos(Integer cantidad, String producto) {
@@ -26,22 +27,38 @@ public class AsignacionDeVehiculoDeEntregaSteps extends StepDefinition {
 
     @When("^se solicita la entrega en la calle (.*)$")
     public void seSolicitaLaEntregaEnLaCalle(String direccionDeEntrega) {
-        pedido.setDireccionDeEntrega(direccionDeEntrega);
-        pedido.setProductos(productos);
-        envio = restTemplate.postForEntity(url() + "/solicitar-entrega", pedido, Envio.class);
+        solicitarEnvioA(direccionDeEntrega);
     }
 
     @Then("^se asigna como vehiculo de entrega (.*)$")
-    public void seAsignaComoVehiculoDeEntrega(String vehiculo) {
-        assertThat(envio.getBody().getVehiculo()).isEqualToIgnoringCase(vehiculo);
-    }
-
-    private void agregarAlPedido(String item, Integer cantidad) {
-        productos.put(item, cantidad);
+    public void seAsignaComoVehiculoDeEntrega(String vehiculoAsignado) {
+        validarQueElVehiculoDeEntregaSeaUn(vehiculoAsignado);
     }
 
     @Then("^no es posible asignar un vehiculo$")
     public void noEsPosibleAsignarUnVehiculo() {
-        assertThat(envio.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        validarStatusDeLaRespuestaConError();
+    }
+
+
+
+    private void solicitarEnvioA(String direccionDeEntrega) {
+        pedido.setDireccionDeEntrega(direccionDeEntrega);
+        pedido.setProductos(productos);
+        final ResponseEntity<Envio> responseEntity = restTemplate.postForEntity(url() + "/solicitar-entrega", pedido, Envio.class);
+        envio = responseEntity.getBody();
+        httpStatus = responseEntity.getStatusCode();
+    }
+    
+    private void validarStatusDeLaRespuestaConError() {
+        assertThat(httpStatus).isEqualTo(HttpStatus.BAD_REQUEST);
+    }
+
+    private void validarQueElVehiculoDeEntregaSeaUn(String vehiculo) {
+        assertThat(envio.getVehiculo()).isEqualToIgnoringCase(vehiculo);
+    }
+
+    private void agregarAlPedido(String item, Integer cantidad) {
+        productos.put(item, cantidad);
     }
 }

@@ -9,7 +9,7 @@ public class GeneradorDeEnvios {
 
     public Envio generar(Map<String, Integer> productos, String direccionDeEntrega) throws Exception {
         Envio envio = new Envio();
-        envio.setDireccionDeEntrega(direccionDeEntrega);
+
         int cantidadDeProductos = contarProductos(productos);
         if(cantidadDeProductos <= 5){
             envio.setVehiculo(Vehiculo.BICICLETA.name());
@@ -22,6 +22,8 @@ public class GeneradorDeEnvios {
         } else {
             throw new Exception("Cantidad de paquetes demasiado grande " + cantidadDeProductos);
         }
+
+        envio.setDireccionDeEntrega(direccionDeEntrega);
         return envio;
     }
 
