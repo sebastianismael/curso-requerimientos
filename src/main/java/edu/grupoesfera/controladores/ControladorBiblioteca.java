@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorBiblioteca {
 
     private Facturador facturador = new Facturador();
+    private CalculadorDeCostoDeEntrega calculadorDeCostoDeEntrega = new CalculadorDeCostoDeEntrega();
 
     @PostMapping(path = "/calcular-costo-envio")
     public Integer calcularCosto(@RequestBody Pedido pedido){
-        return CalculadorDeCostoDeEntrega.calcular(pedido.getProductos(), pedido.getTipoCliente());
+        return calculadorDeCostoDeEntrega.calcular(pedido.getProductos(), pedido.getTipoCliente());
     }
 
     @PostMapping(path = "/solicitar-entrega")
