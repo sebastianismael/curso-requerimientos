@@ -9,8 +9,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ControladorBiblioteca {
 
-    @PostMapping(path = "/calcular-costo-envio")
-    public Integer calcularCosto(@RequestBody Pedido pedido){
-        return CalculadorDeCostoDeEntrega.calcular(pedido.getProductos(), pedido.getTipoCliente());
-    }
+
 }

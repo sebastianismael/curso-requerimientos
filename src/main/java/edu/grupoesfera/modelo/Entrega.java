@@ -12,4 +12,7 @@ public enum Entrega {
         return costo;
     }
 
+    public static int costoDe(String tipo){
+        return valueOf(tipo.toUpperCase()).costo();
+    }
 }
