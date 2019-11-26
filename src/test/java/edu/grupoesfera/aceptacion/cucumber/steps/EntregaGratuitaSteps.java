@@ -28,12 +28,11 @@ public class EntregaGratuitaSteps extends StepDefinition {
     }
 
     @Then("^obtiene entrega (.*)$")
-    public void validarGastosDeEntrega(String tipoEntrega) {
+    public void validarGastosDeEntrega(String tipoDeEntrega) {
         Integer gastosDeEnvio = 0;
 
-        assertThat(gastosDeEnvio).isEqualTo(Entrega.costoDe(tipoEntrega));
+        assertThat(gastosDeEnvio).isEqualTo(Entrega.costoDe(tipoDeEntrega));
     }
-
-
+    //{"tipoCliente":"VIP","productos":{"libros":5}}
     //Integer gastosDeEnvio = restTemplate.postForObject(url() + "/calcular-costo-envio", pedido, Integer.class);
 }
