@@ -13,7 +13,7 @@ public class CalculadorDeCostoDeEntrega {
     public Integer calcular(Map<String, Integer> productos, String cliente) {
 
         if(pedidoVacio(productos)){
-            throw new RuntimeException("El pedido con contiene productos");
+            throw new RuntimeException("El pedido no contiene productos");
         }
 
         if(esClienteVIP(cliente)){
