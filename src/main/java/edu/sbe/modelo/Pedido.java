@@ -1,4 +1,4 @@
-package edu.grupoesfera.dto;
+package edu.sbe.modelo;
 
 import java.util.Map;
 

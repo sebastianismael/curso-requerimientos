@@ -1,4 +1,4 @@
-package edu.grupoesfera.servicios;
+package edu.sbe.servicios;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
